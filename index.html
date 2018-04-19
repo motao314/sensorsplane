@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,user-scalable=no" />
+<meta name="author" content="MoTao" />
+<script type="text/javascript">
+(function(){
+	var html = document.documentElement;
+	var size = html.clientWidth/10;
+	html.style.fontSize = size + "px";
+})();
+</script>
+<title>妙味课堂</title>
+<style type="text/css">
+@keyframes bg {
+	0% {
+		background-position: 0 0;
+	}
+	100% {
+		background-position: 0 -32.16rem;	
+	}
+}
+@-webkit-keyframes bg {
+	0% {
+		background-position: 0 0;
+	}
+	100% {
+		background-position: 0 -32.16rem;	
+	}
+}
+@keyframes music {
+	0%{
+		transform: rotate(0deg);
+	}
+	100%{
+		transform: rotate(360deg);
+	}
+}
+@-webkit-keyframes music {
+	0%{
+		-webkit-transform: rotate(0deg);
+	}
+	100%{
+		-webkit-transform: rotate(360deg);
+	}
+}
+/* @keyframes rotateY {
+	0%{
+		transform: rotateY(5deg);
+	}
+	100%{
+		transform: rotateY(-5deg);
+	}
+}
+@-webkit-keyframes rotateY {
+	0%{
+		-webkit-transform: rotateY(5deg);
+	}
+	100%{
+		-webkit-transform: rotateY(-5deg);
+	}
+} */
+body {
+	margin: 0;
+}
+.page {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: #48424c;
+}
+#bg {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+}
+.bg {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	background: url(img/bg.jpg);
+	background-size: 10rem 32.16rem;
+	transform: rotate(180deg);
+	-webkit-transform: rotate(180deg);
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	/* -webkit-animation: bg 12s infinite linear;
+	animation: bg 12s infinite linear; */
+}
+#nub {
+	position: absolute;
+	left: .5rem;
+	top: .5rem;
+	padding: .7rem;
+	width: 1.6rem;
+	height: 1.6rem;
+	background: url(img/nubBg.png) no-repeat;
+	background-size: cover;
+	color: #fff;
+	text-align: center;
+	z-index: 10;
+}
+#nub strong {
+	display: block;
+	line-height: .8rem;
+	font-size: .3rem;
+	font-weight: normal;
+	border-bottom: 1px solid #fff;
+}
+#nub span {
+	display: block;
+	line-height: .8rem;
+	font-size: .25rem;
+}
+#track {
+	position: absolute;
+	left: 50%;
+	bottom: 0;
+	width: 1.4rem;
+	height: 2.212rem;
+	margin: 0 0 .1rem -.7rem;
+	background: url(img/self.png) no-repeat;
+	background-size: cover;
+}
+.car1 {
+	position: absolute;
+	width: 1.147rem;
+	margin-left: -.5735rem;
+	height: 1.4rem;
+	top: -1.4rem;
+	background: url(img/car1.png) no-repeat;
+	background-size: cover;
+}
+.car2 {
+	position: absolute;
+	width: .92rem;
+	margin-left: -.46rem;
+	height: 1.867rem;
+	top: -.9335rem;
+	background: url(img/car2.png) no-repeat;
+	background-size: cover;
+}
+.driveway1 {
+	left: 1rem;
+}
+.driveway2 {
+	left: 3rem;
+}
+.driveway3 {
+	left: 5rem;
+}
+.driveway4 {
+	left: 7rem;
+}
+.driveway5 {
+	left: 9rem;
+}
+#over {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	color: #fff;
+	text-align: center;
+	font: 30px/300px Arial;
+	background: #000;
+}
+
+#loading {
+	z-index: 4;
+	transition: .5s opacity;
+}
+#explain {
+	background: url(img/bg2.jpg) no-repeat center 0;
+	background-size: cover;
+	z-index: 3;
+}
+#wrap {
+	z-index: 1;
+}
+#over {
+	z-index: 2;
+	opacity: 0;
+	background: url('img/bg.jpg') no-repeat center;
+	background-size: 10rem auto;
+}
+.overContent {
+	position: absolute;
+	left: .7335rem;
+	top: 50%;
+	margin-top: -6.4rem;
+	width: 8.533rem;
+	height: 12.8rem;
+	background: url('img/plane.png') no-repeat center bottom;
+	background-size: 5.173rem auto;
+}
+.overNub {
+	margin-top: -1.027rem;
+	height: 8.93rem;
+	background: url(img/over.png) no-repeat;
+	background-size: cover;
+	position: relative;
+}
+#over .nub {
+	margin: 0;
+	position: absolute;
+	top: 3.3rem;
+	left: 2.65rem;
+	width: 3.44rem;
+	font: .6rem/1rem Arial,"宋体";
+	color: #fff;
+}
+#over .nub span {
+	font-size: .8rem;
+	margin-right: .2rem;
+	color: #f90364;
+}
+
+#loading img {
+	display: block;
+	margin: 2rem auto 0;
+	width: 6rem;
+}
+#loading div {
+	font: .8rem/2rem "宋体";
+	color: #fff;
+	text-align: center;
+}
+#explain .text3d {
+	position: absolute;
+	left: .7335rem;
+	top: .5rem;
+	width: 8.533rem;
+	height: 7.96rem;
+	/* -webkit-perspective: 5rem;
+	perspective: 5rem; */
+}
+#explain .text {
+	width: 100%;
+	height: 100%;
+	background: url(img/explain.png) no-repeat;
+	background-size: cover;
+	/* animation: 4s rotateY ease-in-out infinite alternate; */
+}
+#explain .plane {
+	position: absolute;
+	left: 2.51745rem;
+	bottom: 0rem;
+	width: 4.9651rem;
+	height: 4.0131rem;
+	background: url(img/plane.png) no-repeat;
+	background-size: cover;
+}
+#restart {
+	position: absolute;
+	left: 2.85rem;
+	bottom: 0;
+	width: 2.853rem;
+	height: 2.853rem;
+}
+#startBtn {
+	position: absolute;
+	left: 3.5735rem;
+	top: 8rem;
+	width: 2.853rem;
+	height: 2.853rem;
+}
+#music {
+	position: absolute;
+	right: 1rem;
+	top: 1rem;
+	width: 1.52rem;
+	height: 1.52rem;
+	background: url(img/musicBg.png) no-repeat;
+	background-size: cover;
+	z-index: 10;
+}
+#music .playIco {
+	position: absolute;
+	left: .18rem;
+	top: .18rem;
+	width: 1.16rem;
+	height: 1.16rem;
+	background: url(img/musicClose.png) no-repeat;
+	background-size: cover;
+}
+.playShow#music  .playIco{
+	animation: 2s music linear infinite;
+	background-image: url(img/musicShow.png);
+}
+.btn {
+	display: block;
+	height: 100%;
+	position: relative;
+	text-decoration: none;
+}
+.btnBg {
+	display: block;
+	height: 100%;
+	background: url(img/btnBg.png) no-repeat;
+	background-size: cover;
+	transition: .5s;
+	-webkit-transform: rotate(0deg);
+	transform: rotate(0deg);
+}
+.btnActive .btnBg {
+	-webkit-transform: rotate(180deg);
+	transform: rotate(180deg);
+} 
+.btnText {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	font-size: .45rem;
+	line-height: 2.853rem;
+	text-align: center;
+	color: #fff;
+	background: url(img/btn.png) no-repeat center center;
+	background-size: 1.8rem 1.8rem;
+}
+#mask {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	background: #f90364;
+	z-index: 10;
+	-webkit-transform: scale(0);
+	transform: scale(0);
+}
+</style>
+<script type="text/javascript" src="js/css.js"></script>
+</head>
+<body>
+<section id="loading" class="page">
+	<img src="img/loading.gif">
+	<div>0%</div>
+</section>
+<script type="text/javascript">
+(function(){
+	var load = document.querySelector('#loading');
+	var loadText = load.querySelector('div');
+	var imgData = [
+		"img/bg.jpg",
+		"img/car1.png",
+		"img/car2.png",
+		"img/nubBg.png",
+		"img/self.png",
+		"img/nubBg.png",
+		"img/bg2.jpg",
+		"img/plane.png",
+		"img/btn.png",
+		"img/btnBg.png"
+	];
+	var length = 0;
+	for(var i = 0; i < imgData.length; i++){
+		(function(n){
+			var img = new Image();
+			img.src = imgData[n];
+			img.onload = function(){
+				length++;
+				loadText.innerHTML = parseInt(length/imgData.length*100)+"%";
+				if(length == imgData.length){
+					loadOver();
+				}
+			};
+		})(i);
+	}
+	function loadOver(){
+		load.style.opacity = 0;
+		function end(){
+			load.removeEventListener("transitionend",end);
+			load.removeEventListener("WebkitTransitionEnd",end);
+			load.style.display = "none";
+			load.style.display = "none";
+		}
+		load.addEventListener("transitionend",end);
+		load.addEventListener("WebkitTransitionEnd",end);
+	}
+})();
+</script>
+<section id="explain" class="page">
+	<div class="text3d">
+		<div class="text"></div>
+	</div>
+	<div class="plane"></div>
+	<div id="startBtn">
+		<a href="javascript:;" class="btn">
+			<span class="btnBg"></span>
+			<span class="btnText">开始</span>
+		</a>
+	</div>
+</section>
+<section id="wrap" class="page">
+	<a href="javascript:;" id="music">
+		<span class="playIco"></span>
+	</a>
+	<div id="bg">
+		<div class="bg"></div>
+	</div>
+	<div id="nub">
+		<strong>得 分</strong>
+		<span>0</span>
+	</div>
+	<div id="track"></div>
+</section>
+<section id="over" class="page">
+	<div class="overContent">
+		<div class="overNub">
+			<p class="nub"><span>0</span>分</p>
+			<div id="restart">
+				<a href="javascript:;" class="btn">
+					<span class="btnBg"></span>
+					<span class="btnText">继续玩</span>
+				</a>
+			</div>
+		</div>
+	</div>
+</section>
+<div id="mask"></div>
+<audio src="img/car.mp3" loop preload id="audio"></audio>
+<script type="text/javascript">
+document.addEventListener('touchstart', function(e) {
+	e.preventDefault();
+});
+window.onload = function(){
+	var explain = document.querySelector('#explain');
+	var startBtn = document.querySelector('#startBtn');
+	var restartBtn = document.querySelector('#restart');
+	var wrap = document.querySelector('#wrap');
+	var over = document.querySelector('#over');
+	var audio = document.querySelector('#audio');
+	var nub = document.querySelector('#nub span');
+	var music = document.querySelector('#music');
+	var btns = document.querySelectorAll('.btn');
+	var mask = document.querySelector('#mask');
+	css(mask,"scale",0);
+	window.isStop = false;
+	window.startTime = Date.now();
+	window.isMusic = true;
+	for(var i = 0; i < btns.length; i++){
+		btns[i].addEventListener("touchstart",function(){
+			this.className = "btn btnActive";
+		});
+		btns[i].addEventListener("touchend",function(){
+			var rect = this.getBoundingClientRect();
+			this.className = "btn";
+			mask.style.transition = "none";
+			mask.style.WebkitTransformOrigin = (rect.left+rect.width/2)+"px "+(rect.top+rect.height/2)+"px";
+			setTimeout(function(){
+				maskShow();
+			},30);
+		});
+	}
+	music.addEventListener("touchend",function(){
+		isMusic = !isMusic;
+		if(isMusic){
+			audio.play();
+			music.className = "playShow";
+		} else {
+			music.className = "";
+			audio.pause();
+		}
+	});
+	function maskShow(){
+		mask.style.transition = "1s";
+		css(mask,"scale",200);
+		setTimeout(
+			function(){
+				var cars = wrap.querySelectorAll('.car1,.car2');	
+				if(isMusic) {
+					music.className = "playShow";
+					audio.play();	
+				}
+				over.style.opacity = 0;
+				explain.style.opacity = 0;
+				css(mask,"opacity",0);
+				nub.innerHTML = 0;
+				for(var i = 0; i < cars.length; i++){
+					wrap.removeChild(cars[i]);
+				}
+			},600
+		);
+		setTimeout(function(){
+			end();
+		},1200);
+	}
+	function end(){
+		mask.style.transition = "none";
+		css(mask,"scale",0);
+		css(mask,"opacity",100);
+		window.carLength = 0;
+		window.isStop = false;
+		css(over,"scale",0);
+		explain.style.display = "none";
+		startTime = Date.now();
+		move();
+		createCar();
+	}
+};
+/* 赛车移动 */
+function getIos(){
+ 	var u = navigator.userAgent; 
+	return !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+}
+function move(){
+	var track = document.querySelector('#track');
+	var wrap = document.querySelector('#wrap');
+	css(track, "translateY", 0);
+	css(track, "translateZ", 0.01);
+	var maxT = (wrap.clientWidth - track.offsetWidth)/2;
+	var lastDate = Date.now();
+	window.addEventListener('devicemotion', function(e) {
+		if(isStop) {
+			return;
+		}
+		var nowDate = Date.now();
+		if(nowDate - lastDate < 30) {
+			return
+		}
+		lastDate = nowDate;
+		var motion = e.accelerationIncludingGravity;
+		var x = Math.round(motion.x);
+		var speed = 0;
+		var translate = css(track, "translateX");
+		if(!getIos()){
+			x = -x;
+		}
+		if(Math.abs(x) > 10){
+			x = x/Math.abs(x) * 10;
+		}
+		speed = x;
+		speed = Math.abs(speed)>5?speed*1.2:speed*1.05;
+		translate += speed;
+		if(Math.abs(translate) > maxT) {
+			translate = translate/Math.abs(translate) * maxT;
+		}
+		css(track, "translateX", translate);
+	});
+} 	
+function createCar(){
+	var carType = ["car1","car2"];
+	var drivewayType = ["driveway1","driveway2","driveway3","driveway4","driveway5"];
+	window.carTimer = setInterval(function(){
+		var length = Math.round(Math.random()*3)+1;
+		drivewayType.sort(function(){
+			return Math.random() - .5;
+		});
+		drivewayType.sort(function(){
+			return Math.random() - .5;
+		}); 	
+		for(var i = 0; i < length; i++){
+			var car = carType[parseInt(Math.random()*carType.length)];
+			moveCar(car, drivewayType[i]);
+		}
+	},1400); 	
+}
+function moveCar(carType, drivewayType){
+	var wrap = document.querySelector('#wrap');
+	var car = document.createElement("div");
+	var carId = 0;
+	var speed = 5;
+	var wrapH = wrap.clientHeight;
+	var nowTime = Date.now();
+	speed += Math.floor((nowTime - startTime)/5000)*.5;
+	console.log(speed);
+	car.className = carType + " " + drivewayType;
+	css(car,"translateZ",0.01);
+	css(car,"translateY",-parseInt(Math.random()*140));
+	wrap.appendChild(car);
+	function carMove(){
+		if(isStop) {
+			return;
+		}
+		var top = car.getBoundingClientRect().top;
+		var translateY = css(car,"translateY");
+		translateY += speed;
+		css(car,"translateY",translateY);
+		if(top >= wrapH){
+			wrap.removeChild(car);
+			carLength++;
+			document.querySelector('#nub span').innerHTML =carLength;
+			return;
+		}
+		isStop = isCollision(car);
+		if(isStop) {
+			overShow();
+			clearInterval(window.carTimer);
+		} else {
+			carId = requestAnimationFrame(carMove);	
+		}
+		
+	}
+	carMove();
+}
+function overShow(){
+	var audio = document.querySelector('#audio');
+	// var audio2 = document.querySelector('#audio2');
+	var over = document.querySelector('#over');
+	var overNub = over.querySelector('.nub span');
+	if(isMusic) {
+		audio.pause();
+		// audio2.play();
+	} else {
+		audio.pause();
+		// audio2.pause();	
+	}
+	overNub.innerHTML = carLength;
+	css(over,"scale",100);
+	css(over,"opacity",100);
+}
+function isCollision(car){
+	var self = document.querySelector('#track');
+	var selfRect = self.getBoundingClientRect();
+	var carRect = car.getBoundingClientRect();
+	if(
+		carRect.top + carRect.height < selfRect.top
+		|| carRect.top  > selfRect.top + selfRect.height
+		|| carRect.left + carRect.width  < selfRect.left
+		|| carRect.left > selfRect.left + selfRect.width
+	  ) {
+		return false;
+	}
+	return true;
+}
+</script>	
+</body>
+</html>
